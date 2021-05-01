@@ -24,7 +24,7 @@ docker run -d -v ${pwd}:/app node-app-container -v /app/node_modules -p 8080:300
 ```
 docker run -d -v ${pwd}:/app node-app-container:ro -v /app/node_modules -p 8080:3000 node-app-image
 ```
-## Providing port as and env variable 
+## Providing port as an env variable 
 ```
 docker run -d -v ${pwd}:/app node-app-container:ro -v /app/node_modules --env PORT=8080 -p 8080:8080 node-app-image
 ```

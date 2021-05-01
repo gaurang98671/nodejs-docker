@@ -18,7 +18,8 @@ docker run -d -v ${pwd}:/app node-app-container -v /app/node_modules -p 8080:300
 ```
 
 ## Preventing containers from changing files in host
-> -v is a two way syncing so changing files in container can cause files in our host to change as well
+> -v is a two way syncing so changing files in container can cause files in our host to change as well.
+> 
 > To avoid this we add :ro i.e. read only after /app which allows only one way syncing
 ```
 docker run -d -v ${pwd}:/app node-app-container:ro -v /app/node_modules -p 8080:3000 node-app-image

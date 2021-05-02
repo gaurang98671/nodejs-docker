@@ -1,6 +1,8 @@
 const express = require('express');
 const mongo = require('mongoose');
-mongo.connect("mongodb://gaurang:123@mongo:27017/?authSource=admin"
+const { MONGO_IP, MONGO_USER, MONGO_PASSWORD, MONGO_PORT } = require('./config/configurations');
+
+mongo.connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`
 ).then(()=>{
     console.log("Successfully connected to database...")
 }).catch((e)=>{
@@ -12,6 +14,10 @@ const app = express();
 
 app.get('/', (req, res)=>{
     res.send("Process id!!" + process.pid);
+})
+
+app.get('data', (req,res)=>{
+    mongo.get
 })
 
 module.exports = {app}

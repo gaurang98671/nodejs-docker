@@ -40,3 +40,15 @@ docker run -d -v ${pwd}:/app node-app-container:ro -v /app/node_modules --env-fi
 ```
 docker-compose up -d
 ```
+
+## Running in development mode
+
+```
+docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d
+```
+
+## Running in production mode
+
+```
+docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d
+```

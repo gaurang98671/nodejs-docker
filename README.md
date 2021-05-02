@@ -34,3 +34,9 @@ docker run -d -v ${pwd}:/app node-app-container:ro -v /app/node_modules --env PO
 ```
 docker run -d -v ${pwd}:/app node-app-container:ro -v /app/node_modules --env-file ./.env -p 8080:8080 node-app-image
 ```
+
+## Running docker-compose.yaml
+
+```
+docker-compose up -d
+```

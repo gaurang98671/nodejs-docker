@@ -13,4 +13,5 @@ services:
             - MONGO_USER=gaurang
             - MONGO_PASSWORD=123
             - PORT=3000
+            - REDIS_SECRET=secret
         command: npm run dev

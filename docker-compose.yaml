@@ -13,6 +13,10 @@ services:
             - MONGO_INITDB_ROOT_PASSWORD=123
         volumes: 
             - mongo-db:/data/db
+
+    redis:
+        image: redis
+        
 volumes: 
     mongo-db:
         

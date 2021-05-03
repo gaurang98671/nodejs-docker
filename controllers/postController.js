@@ -2,12 +2,12 @@ const Post = require("../models/blog")
 
 exports.getOnePost = async (req, res, next)=>{
     try{
-        const post = await Post.find(req.params.id);
+        const post = await Post.findById(req.params.id);
         res.status(200).json({
             status: 'success',
-            results: posts.length,
+            
             data: {
-                posts
+                post
             }
 
         })
@@ -23,12 +23,13 @@ exports.getOnePost = async (req, res, next)=>{
 
 exports.getAllPosts = async (req, res, next)=>{
     try{
-        const post = await Post.find();
+        var post = await Post.find()
+       
         res.status(200).json({
             status: 'success',
-            results: posts.length,
+           
             data: {
-                posts
+                post
             }
 
         })
@@ -36,7 +37,7 @@ exports.getAllPosts = async (req, res, next)=>{
     catch(e)
     {
         res.status(404).json({
-            status : 'failed to fetch posts'
+            status : "Error"
         })
     }
 }

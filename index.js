@@ -7,12 +7,7 @@ const app = express();
 
 const retryMongoConnect = ()=>{
     const mongo_url = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`
-mongo.connect(mongo_url,{
-    useFindAndModify: false,
-    useNewUrlParser: true,
-
-    useUnifiedTopology: false
-}
+mongo.connect(mongo_url
 ).then(()=>{
     console.log("Successfully connected to database....")
 }).catch((e)=>{
@@ -22,6 +17,7 @@ mongo.connect(mongo_url,{
 }
 
 retryMongoConnect()
+app.use(express.urlencoded({extended : true}));
 app.use(express.json()); 
 app.use("/api",router)
 module.exports = {app}

@@ -8,6 +8,7 @@ const redis = require('redis')
 let RedisStore = require('connect-redis')(session)
 
 
+
 //Connect to redis container
 let redisClient = redis.createClient(
     {

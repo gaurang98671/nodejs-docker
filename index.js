@@ -6,7 +6,7 @@ const router = require('./router/postRoutes');
 var session = require('express-session')
 const redis = require('redis')
 let RedisStore = require('connect-redis')(session)
-const protect = require('./middleware/authMiddleware')
+
 
 //Connect to redis container
 let redisClient = redis.createClient(

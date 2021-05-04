@@ -8,8 +8,7 @@ exports.getOnePost = async (req, res, next)=>{
             
             data: {
                 post,
-            }
-
+            },
         })
     }
     catch(e)

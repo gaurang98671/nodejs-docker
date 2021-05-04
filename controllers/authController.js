@@ -1,16 +1,29 @@
 
 const e = require('express')
+const session = require('express-session')
 const User = require('../models/user')
 
 exports.signUp = async (req, res, next)=>{
-    try{
-        const newUser = await User.create(req.body)
-        res.status(200).json(newUser)
-    }
-    catch(e)
+    const { userName, password } = req.body
+    if(userName && password)
     {
-        res.status(400).json({
-            status: "Failed to create user" 
+        try{
+            
+            const newUser = await User.create(req.body)
+            
+            return res.status(200).json(newUser)
+        }
+        catch(e)
+        {
+            return res.status(400).json({
+                status: "Failed to create user" 
+            })
+        }
+    }
+    else
+    {
+        return res.status(400).json({
+            status: "Missing values" 
         })
     }
 }
@@ -30,6 +43,7 @@ exports.login = async (req, res, next)=>{
             }
             else
             {
+                req.session.user = user;
                 return res.status(200).json({
                     status : "Success",
                     user: user

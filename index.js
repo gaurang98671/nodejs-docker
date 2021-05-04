@@ -37,7 +37,14 @@ app.use(session({
     store: new RedisStore({ client : redisClient }), 
     secret: REDIS_SECRET,
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie : {
+        secure : false,
+        resave : false,
+        httpOnly : true,
+        saveUninitialized : false,
+        maxAge : 30000
+    } 
 }));
 app.use(express.json()); 
 app.use("/api",router)

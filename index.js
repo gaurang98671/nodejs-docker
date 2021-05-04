@@ -6,6 +6,7 @@ const router = require('./router/postRoutes');
 var session = require('express-session')
 const redis = require('redis')
 let RedisStore = require('connect-redis')(session)
+const protect = require('./middleware/authMiddleware')
 
 //Connect to redis container
 let redisClient = redis.createClient(
@@ -43,7 +44,7 @@ app.use(session({
         resave : false,
         httpOnly : true,
         saveUninitialized : false,
-        maxAge : 30000
+        maxAge : 60 * 1000
     } 
 }));
 app.use(express.json()); 

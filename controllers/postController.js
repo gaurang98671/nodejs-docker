@@ -7,7 +7,7 @@ exports.getOnePost = async (req, res, next)=>{
             status: 'success',
             
             data: {
-                post
+                post,
             }
 
         })

@@ -18,7 +18,7 @@ let redisClient = redis.createClient(
 )
 
 const app = express();
-
+app.enable("trust proxy")
 //Connect to mongo container
 const retryMongoConnect = ()=>{
 const mongo_url = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`
@@ -51,6 +51,9 @@ app.use(session({
 app.use(express.json()); 
 app.use("/api",router)
 app.use("/auth", AuthRouter)
-
+app.get('/hello', (req, res)=>{
+    console.log("Running")
+    res.send("Hello!!!")
+})
 module.exports = {app}
 

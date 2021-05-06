@@ -58,7 +58,7 @@ docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d
 docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d --build --scale node-app-container=2
 ```
 
-## Join docker swarm
+## Docker swarm
 ```
 docker swarm init
 docker stack deploy  -c docker-compose.prod.yaml myapp

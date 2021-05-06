@@ -1,10 +1,35 @@
 version: "3"
-services: 
+services:
+    nginx:
+        image: nginx:stable-alpine
+        ports:
+            - "8080:80"
+        volumes:
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+        depends_on:
+            - node-app-container
     node-app-container:
-        build:
-            context: .
-            args: 
-                NODE_ENV: production
-        environment: 
-            - NODE_ENV=production
-        command: node server.js
+        deploy:
+            replicas: 3
+        image: gaurang98671/nodejs-docker-test9999
+        environment:
+            - MONGO_USER=gaurang
+            - MONGO_PASSWORD=123
+            - REDIS_SECRET=secret
+        depends_on:
+            - mongo
+    mongo:
+        image: mongo
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=gaurang
+            - MONGO_INITDB_ROOT_PASSWORD=123
+        volumes:
+            - mongo-db:/data/db
+
+    redis:
+        image: redis
+
+volumes: 
+
+    mongo-db:
+                

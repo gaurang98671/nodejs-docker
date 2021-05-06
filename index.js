@@ -51,9 +51,16 @@ app.use(session({
 app.use(express.json()); 
 app.use("/api",router)
 app.use("/auth", AuthRouter)
-app.get('/hello', (req, res)=>{
-    console.log("Running")
-    res.send("Hello!!!")
+
+app.use('/test',(req, res)=>{
+    res.send("Testingodo")
+})
+app.use("/test2", (req, res)=>{
+    res.send("Route working")
+})
+app.get("/test3", (req, res)=>{
+    res.send("Working")
 })
 module.exports = {app}
+
 
